@@ -6,6 +6,4 @@ app.get('/', (req, res) => {
     res.send('Merhaba, Express!');
 });
 
-app.listen(port, () => {
-    console.log(`Uygulama http://localhost:${port} adresinde çalışıyor.`);
-});
+module.exports = app
