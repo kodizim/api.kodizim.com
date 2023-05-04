@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "lint": "pretty-quick -w . && eslint . --fix",
     "lint-staged": "lint-staged",
     "test": "jest --testEnvironment=node --verbose --forceExit --watchAll --maxWorkers=1",
@@ -24,6 +25,8 @@
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
     "express": "~4.16.1",
     "express-mongo-sanitize": "^2.2.0",
     "express-session": "^1.17.3",
@@ -31,7 +34,8 @@
     "http-errors": "~1.6.3",
     "mongodb": "^4.13.0",
     "mongoose": "^6.8.2",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.22"
   },
   "devDependencies": {
     "eslint": "^7.8.1",

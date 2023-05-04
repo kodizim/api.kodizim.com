@@ -1,17 +1,41 @@
-const express = require('express');
-// eslint-disable-next-line import/no-extraneous-dependencies
-const axios = require('axios');
+if (process.env.NODE_ENV != "production")
+  // eslint-disable-next-line global-require,import/no-extraneous-dependencies
+  require('dotenv').config()
+
+const express = require("express");
+const createError = require("http-errors");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 
 const app = express();
-const port = process.env.PORT || 8080;
 
-app.get('/', async (req, res) => {
-    res.send("Welcome Kodizim API");
+// view engine setup
+app.set("views", path.join(__dirname, "src/views"));
+app.set("view engine", "ejs");
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+
+// eslint-disable-next-line import/extensions,import/no-unresolved
+app.use("/api/v1/public", require("./routes"));
+
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  next(createError(404));
 });
 
-app.get('/mentor', async (req, res) => {
-    const response = await axios.get("https://script.googleusercontent.com/macros/echo?user_content_key=_x7Y4Cl2T_9I8jpOwM7WFpGpGW4DiL8sVND5xBsGef5QaftSzJ4RWeTiiPbsPjcyCgjSXO-g0Bshtn0CyK4yfnmVBqaZ0WcZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnBUzWhRfDfwU_3Rb_kcZB4JHOV4jEC2wbH9buNG3-Hj65ZJOyB7BBYyLnauiUc65TUke6aZnFAiAy8gd5zQpGnMrJWqkYMEASNz9Jw9Md8uu&lib=MJZzRVtB4mb8baCYROCMSyW-JXcztBCpO")
-    res.json(response.data);
-});
+// error handler
+app.use((err, req, res) =>{
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
-module.exports = app
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
+});
+module.exports = app;
