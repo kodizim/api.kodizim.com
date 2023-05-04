@@ -15,6 +15,7 @@ const http = require('http')
  */
 
 const port = normalizePort(process.env.PORT || '8080')
+console.log('Server is running on port: ' + port)
 app.set('port', port)
 
 /**
