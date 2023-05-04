@@ -1,0 +1,164 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Kodizim API Swagger",
+    "description": "",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/v1/public/mentee": {
+      "get": {
+        "tags": [
+          "Mentee"
+        ],
+        "summary": "Get all freelance job in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Mentee"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/mentor": {
+      "get": {
+        "tags": [
+          "Mentors"
+        ],
+        "summary": "Get all freelance job in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Mentee"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/open-source-place": {
+      "get": {
+        "tags": [
+          "Open Source Place"
+        ],
+        "summary": "Get all freelance job in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Project"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/freelance-jobs": {
+      "get": {
+        "tags": [
+          "Freelance Jobs"
+        ],
+        "summary": "Get all freelance job in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Jobs"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/public/events": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "summary": "Get all freelance job in system",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Events"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Mentee": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "linkedin-url": {
+          "type": "string"
+        },
+        "github-url": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "profession": {
+          "type": "string"
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "github-project-url": {
+          "type": "string"
+        }
+      }
+    },
+    "Jobs": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "Events": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "photo-url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
